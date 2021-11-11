@@ -17,13 +17,27 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 
 	"github.com/JOSHUAJEBARAJ/docker-secrets/cmd"
 )
 
-func main() {
+func fileExists(filename string) bool {
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return !info.IsDir()
+}
 
+func main() {
+	// check whether the output folder is present
+
+	if _, err := os.Stat("output"); !os.IsNotExist(err) {
+		fmt.Println("Output folder is already present in current directory \tplease remove the folder or run the program in different folder")
+		os.Exit(1)
+	}
 	// check whether detect secrets is installed
 
 	_, err := exec.Command("detect-secrets").Output()

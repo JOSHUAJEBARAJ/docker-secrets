@@ -50,7 +50,9 @@ func GetImages(cli *client.Client) ([]Image, error) {
 	return images, nil
 }
 
-func Save(id string) {
+func Save(id string) error {
+
+	fmt.Println("💾 Saving Images as tar File")
 	cli, err := client.NewEnvClient()
 	if err != nil {
 		fmt.Println(err)
@@ -73,7 +75,8 @@ func Save(id string) {
 	defer outFile.Close()
 	_, err = io.Copy(outFile, file_content)
 	if err != nil {
-		fmt.Println(err)
+		return err
 
 	}
+	return nil
 }

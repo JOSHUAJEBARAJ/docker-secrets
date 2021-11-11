@@ -21,17 +21,18 @@ import (
 	"strings"
 
 	"github.com/JOSHUAJEBARAJ/docker-secrets/pkg/client"
+	"github.com/JOSHUAJEBARAJ/docker-secrets/pkg/utils"
 	"github.com/spf13/cobra"
 )
 
 // scanCmd represents the scan command
 var scanCmd = &cobra.Command{
 	Use:   "scan",
-	Short: "pass the image name which you want to scan  aloing with tag\n eg: docker scan alpine:latest",
+	Short: "pass the image name which you want to scan  along with tag\n eg: docker scan alpine:latest",
 
 	Run: func(cmd *cobra.Command, args []string) {
 		image_name := strings.Join(args, " ")
-		fmt.Println("scan called", image_name)
+		//fmt.Println("scan called", image_name)
 
 		// get all images
 		cli, err := client.Init()
@@ -57,11 +58,38 @@ var scanCmd = &cobra.Command{
 
 		// checking whether the image is present in the local system
 		if id == "" {
-			fmt.Println("Given images is not present")
+			fmt.Printf("Image: %s  not present in local machine 😟\n", image_name)
 			return
 		}
+		// saving images
+		save_error := client.Save(id)
+		if save_error != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
 
-		client.Save(id)
+		// untaring images
+		output_error := utils.Untar("output.tar", "output")
+		if output_error != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		// untaring the subfolder
+		untar_err := utils.Outputar()
+		if untar_err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		// scanning
+		scan_err := utils.Scan()
+
+		if scan_err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+
+		}
+
 	},
 }
 
