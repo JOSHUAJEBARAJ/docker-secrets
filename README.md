@@ -42,7 +42,7 @@ docker pull imagename:tag
 docker-secrets scan <image=name>:tag
 ```
 
-![](./static/2021-11-12-13-11-16.png)
+![](./static/2021-11-12-13-17-16.png)
 
 ### Note 
 
