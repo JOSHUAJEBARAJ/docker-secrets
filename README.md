@@ -3,6 +3,7 @@ CLI based tools to find the secrets in docker Images
 
 This tool use  [detect-secrets](https://github.com/ibm/detect-secrets) to find the secrets in the docker Image file system
 
+![](./static/logo.png)
 
 ### Pre-requisite
 
@@ -41,6 +42,8 @@ docker pull imagename:tag
 docker-secrets scan <image=name>:tag
 ```
 
+![](./static/2021-11-12-13-11-16.png)
+
 ### Note 
 
 By default the below command will be executed for detect-secrets.
@@ -53,3 +56,4 @@ If you want to make change to the command , You can change it [here](https://git
 
 - [] Ability to pull the image if it is not present in the local system
 - [] Resolve the symlink error while extracting 
+
