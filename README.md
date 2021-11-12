@@ -12,7 +12,7 @@ This tool use  [detect-secrets](https://github.com/ibm/detect-secrets) to find t
 
 ### Installation
 
-- Download the binary from the release page here  and put it the path // update
+- Download the binary from the release page [here](https://github.com/JOSHUAJEBARAJ/docker-secrets/releases/tag/v1.0)  and put it the path
 - To build locally 
 
 * Clone the repository
@@ -54,6 +54,6 @@ detect-secrets scan --all-files output
 If you want to make change to the command , You can change it [here](https://github.com/JOSHUAJEBARAJ/docker-secrets.git)
 ### TODO
 
-- [] Ability to pull the image if it is not present in the local system
-- [] Resolve the symlink error while extracting 
+- [ ] Ability to pull the image if it is not present in the local system
+- [ ] Resolve the symlink error while extracting 
 
