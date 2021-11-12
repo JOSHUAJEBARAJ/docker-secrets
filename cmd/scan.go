@@ -64,20 +64,21 @@ var scanCmd = &cobra.Command{
 		// saving images
 		save_error := client.Save(id)
 		if save_error != nil {
-			fmt.Println(err)
+			fmt.Println(save_error)
 			os.Exit(1)
 		}
 
 		// untaring images
-		output_error := utils.Untar("output.tar", "output")
+		output_error := utils.Unload("output.tar", "output")
 		if output_error != nil {
-			fmt.Println(err)
+			fmt.Println("error in removing the main folder")
+			fmt.Println(output_error)
 			os.Exit(1)
 		}
 		// untaring the subfolder
 		untar_err := utils.Outputar()
 		if untar_err != nil {
-			fmt.Println(err)
+			fmt.Println(untar_err)
 			os.Exit(1)
 		}
 
@@ -85,7 +86,7 @@ var scanCmd = &cobra.Command{
 		scan_err := utils.Scan()
 
 		if scan_err != nil {
-			fmt.Println(err)
+			fmt.Println(scan_err)
 			os.Exit(1)
 
 		}

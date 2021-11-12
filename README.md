@@ -52,3 +52,4 @@ If you want to make change to the command , You can change it here
 ### TODO
 
 - [] Ability to pull the image if it is not present in the local system
+- [] Resolve the symlink error while extracting
