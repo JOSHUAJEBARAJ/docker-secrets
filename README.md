@@ -16,7 +16,7 @@ This tool use  [detect-secrets](https://github.com/ibm/detect-secrets) to find t
 
 * Clone the repository
 ```bash 
-// update
+git clone https://github.com/JOSHUAJEBARAJ/docker-secrets.git
 ```
 
 Build the binary
@@ -48,8 +48,8 @@ By default the below command will be executed for detect-secrets.
 ```bash
 detect-secrets scan --all-files output
 ```
-If you want to make change to the command , You can change it here
+If you want to make change to the command , You can change it [here](https://github.com/JOSHUAJEBARAJ/docker-secrets.git)
 ### TODO
 
 - [] Ability to pull the image if it is not present in the local system
-- [] Resolve the symlink error while extracting
+- [] Resolve the symlink error while extracting 
