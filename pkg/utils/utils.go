@@ -228,6 +228,6 @@ func Scan() error {
 		return err
 	}
 	cmd.Wait()
-	fmt.Println("📁 Output written in result.json file ")
+	fmt.Println("📁 Output written in results.json file ")
 	return nil
 }
